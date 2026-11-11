@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Портфолио · Твоето Име</title>
+<meta name="description" content="Лично портфолио на студент-програмист: проекти, умения и контакти.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;800;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2f5f3; --ink:#0f1720; --card:#ffffff;
+  --blue:#2f5bff; --coral:#ff6a4d; --butter:#ffd84d; --lilac:#cdbdff; --mint:#92e6c4;
+  --dark:#0f1720;
+  --display:"Geologica","Golos Text",system-ui,sans-serif; --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:26px; --shadow:6px 6px 0 var(--ink);
+}
+@media (prefers-color-scheme:dark){:root{--paper:#0d1117;--ink:#f2f5f3;--card:#161b22}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:10px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* плаваща навигация */
+.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:2px;padding:6px;border:2px solid var(--ink);border-radius:99px;background:color-mix(in srgb,var(--paper) 80%,transparent);backdrop-filter:blur(12px)}
+.nav a{padding:8px 16px;border-radius:99px;text-decoration:none;font-weight:500;font-size:15px;transition:background .2s,color .2s}
+.nav a:hover{background:var(--ink);color:var(--paper)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 72px;overflow:hidden}
+#dots{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;pointer-events:none}
+.hero .wrap>*{pointer-events:auto}
+.hello{display:inline-block;margin:0 0 18px;padding:8px 18px;border:2px solid var(--ink);border-radius:99px;background:var(--butter);color:var(--dark);font-weight:600;transform:rotate(-2deg)}
+.hero h1{font:900 clamp(56px,13.5vw,196px)/.86 var(--display);letter-spacing:-.055em;margin:0 0 32px;color:var(--blue);overflow-wrap:anywhere}
+.lead{font-size:clamp(18px,2.3vw,24px);max-width:30em;margin:0 0 32px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:15px 28px;border:2px solid var(--ink);border-radius:99px;background:var(--card);color:var(--ink);font-weight:600;text-decoration:none;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn.main{background:var(--blue);color:#fff}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.hero .hello,.hero h1,.hero .lead,.hero .btns{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h1{animation-delay:.08s}.hero .lead{animation-delay:.2s}.hero .btns{animation-delay:.3s}
+
+/* лента с технологии */
+.ticker{border-block:2px solid var(--ink);background:var(--coral);color:var(--dark);overflow:hidden;white-space:nowrap}
+.track{display:inline-flex;animation:run 32s linear infinite}
+.track span{padding:14px 28px;font:800 clamp(20px,3vw,30px) var(--display);letter-spacing:-.03em}
+.track span::after{content:"✦";margin-left:56px}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* общо */
+section{padding:96px 0 0}
+h2{font:900 clamp(36px,6.5vw,84px)/.95 var(--display);letter-spacing:-.05em;margin:0 0 14px}
+.sub{max-width:36em;margin:0 0 44px;opacity:.75}
+
+/* bento */
+.bento{display:grid;gap:18px;grid-template-columns:repeat(6,1fr)}
+.tile{border:2px solid var(--ink);border-radius:var(--r);padding:30px;box-shadow:var(--shadow);background:var(--card);color:var(--ink)}
+.tile.c{color:var(--dark)}
+.tile h3{margin:0 0 14px;font:800 22px/1.15 var(--display);letter-spacing:-.03em}
+.tile p{margin:0 0 1em;max-width:60ch}.tile p:last-child{margin:0}
+.bio{grid-column:span 6}
+.focus{grid-column:span 6;background:var(--lilac)}
+.gpa{grid-column:span 3;background:var(--butter);display:flex;flex-direction:column;justify-content:space-between;min-height:190px}
+.cnt{grid-column:span 6;background:var(--mint);display:flex;flex-direction:column;justify-content:space-between;min-height:190px}
+.big{font:900 clamp(56px,9vw,100px)/.9 var(--display);letter-spacing:-.06em}
+@media(min-width:900px){.bento{grid-template-columns:repeat(4,1fr)}.bio{grid-column:span 2;grid-row:span 2}.focus{grid-column:span 2}.cnt{grid-column:span 2}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{padding:7px 16px;border:2px solid var(--dark);border-radius:99px;background:rgba(255,255,255,.55);font-weight:600;font-size:15px}
+
+/* умения */
+.skills{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.skill{display:block;text-decoration:none;border:2px solid var(--ink);border-radius:20px;padding:20px 22px;background:var(--card);transition:transform .2s,background .2s,color .2s}
+.skill:hover{transform:rotate(-1.5deg) translateY(-4px);background:var(--ink);color:var(--paper)}
+.skill b{display:flex;justify-content:space-between;gap:10px;font:800 20px var(--display);letter-spacing:-.03em}
+.skill b em{font:500 14px var(--body);font-style:normal;opacity:.7;align-self:center}
+.dots{display:flex;gap:6px;margin:12px 0}
+.dots i{width:100%;height:10px;border-radius:99px;border:2px solid currentColor;opacity:.35}
+.dots i.on{background:var(--blue);border-color:var(--blue);opacity:1}
+.skill small{font-size:15px;opacity:.8;display:block;line-height:1.45}
+
+/* проекти: стекват се при скрол */
+.stack{display:grid;gap:28px}
+.project{border:2px solid var(--ink);border-radius:32px;padding:clamp(24px,4vw,44px);box-shadow:var(--shadow);color:var(--dark);display:grid;gap:28px}
+@media(min-width:960px){
+  .project{position:sticky;top:calc(84px + var(--i)*18px);grid-template-columns:1.1fr 1fr;gap:44px}
+  .stack{gap:64px}
+}
+.project h3{font:900 clamp(32px,5vw,58px)/.95 var(--display);letter-spacing:-.05em;margin:0 0 12px}
+.project .tag{font-size:19px;margin:0 0 20px;font-weight:500}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.badge{padding:5px 14px;border:2px solid var(--dark);border-radius:99px;background:rgba(255,255,255,.6);font-weight:600;font-size:14px}
+.badge.team{background:var(--dark);color:#fff}
+.facts{display:grid;gap:14px}
+.facts h4{margin:0 0 2px;font:800 15px var(--display);letter-spacing:-.01em}
+.facts p{margin:0;font-size:16px}
+.side{display:flex;flex-direction:column;gap:20px;min-width:0}
+.win{border:2px solid var(--dark);border-radius:18px;background:var(--dark);overflow:hidden}
+.win header{display:flex;gap:7px;align-items:center;padding:12px 16px;border-bottom:1px solid #2b3744;color:#8fa0b5;font-size:13px}
+.win header i{width:11px;height:11px;border-radius:50%;background:#ff6a4d}.win header i:nth-child(2){background:#ffd84d}.win header i:nth-child(3){background:#92e6c4}
+.win header span{margin-left:8px}
+.win pre{margin:0;padding:18px;overflow-x:auto;color:#cfe0ff;font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.live{font-size:14px;font-weight:600}
+
+/* контакти */
+.contact{margin:96px 0;border:2px solid var(--ink);border-radius:40px;background:var(--blue);color:#fff;padding:clamp(32px,7vw,88px);box-shadow:var(--shadow)}
+.contact h2{margin-bottom:28px}
+.mail{display:inline-block;font:900 clamp(24px,5.6vw,72px)/1.05 var(--display);letter-spacing:-.05em;text-decoration:none;border-bottom:4px solid var(--butter);overflow-wrap:anywhere;transition:color .2s}
+.mail:hover{color:var(--butter)}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.links a{padding:13px 26px;border:2px solid #fff;border-radius:99px;text-decoration:none;font-weight:600;transition:background .2s,color .2s}
+.links a:hover{background:#fff;color:var(--blue)}
+footer{padding:0 0 40px;text-align:center;font-size:14px;opacity:.7}
+
+@media(max-width:700px){.nav a{padding:8px 11px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Навигация">
+  <a href="#about">За мен</a><a href="#skills">Умения</a><a href="#projects">Проекти</a><a href="#contact">Контакти</a>
+</nav>
+
+<main>
+  <header class="hero" id="top">
+    <canvas id="dots" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <p class="hello">Здравей, аз съм</p>
+      <h1 id="h-name">Твоето Име</h1>
+      <p class="lead" id="h-lead"></p>
+      <div class="btns">
+        <a class="btn main" href="#projects">Виж проектите</a>
+        <a class="btn" id="h-gh" href="https://github.com/" target="_blank" rel="noopener">GitHub профил</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
+
+  <section id="about"><div class="wrap">
+    <h2>За мен</h2>
+    <p class="sub">Кратко за това кой съм и накъде вървя.</p>
+    <div class="bento">
+      <div class="tile bio" id="bio"></div>
+      <div class="tile c focus"><h3>Развивам се в посока</h3><ul class="chips" id="focus"></ul></div>
+      <!-- Плочка за академичен успех (разкоментирай, за да се върне; върни и реда за #s-gpa в скрипта)
+      <div class="tile c gpa"><h3>Академичен успех</h3><div class="big" id="s-gpa">–</div></div>
+      -->
+      <div class="tile c cnt"><h3>Проекта и технологии</h3><div class="big"><span id="s-proj">0</span>·<span id="s-tech">0</span></div></div>
+    </div>
+  </div></section>
+
+  <section id="skills"><div class="wrap">
+    <h2>Технически умения</h2>
+    <p class="sub">Три деления означават напреднало ниво. Натисни умение и ще видиш проекта, в който го ползвам.</p>
+    <div class="skills" id="skillGrid"></div>
+  </div></section>
+
+  <section id="projects"><div class="wrap">
+    <h2>Проекти</h2>
+    <p class="sub">За всеки проект: проблем, цел, технологии, архитектура и моят принос.</p>
+    <div class="stack" id="projectList"></div>
+  </div></section>
+
+  <section id="contact"><div class="wrap">
+    <div class="contact">
+      <h2>Нека поговорим.</h2>
+      <a class="mail" id="mail" href="#"></a>
+      <div class="links" id="links"></div>
+    </div>
+  </div></section>
+</main>
+<footer>© <span id="year"></span> <span id="f-name"></span> · Публикувано с GitHub Pages</footer>
+
+<script>
+/* ============ РЕДАКТИРАЙ САМО ТОВА ============ */
+const ME = {
+  name: "Мартин Петков",
+  github: "MartinPetkov27",
+  linkedin: "https://www.linkedin.com/in/твоят-профил/",
+  instagram: "https://www.instagram.com/твоят-профил/",
+  facebook: "https://www.facebook.com/твоят-профил/",
+  email: "ти@пример.bg",
+  // gpa: "5.50",   // академичен успех (плочката е закоментирана в HTML)
+  lead: "Студент по информатика във ФМИ на СУ, който превръща идеи в работещ код. Тук са моите проекти, умения и начинът да се свържеш с мен.",
+  // Около 150–200 думи
+  bio: [
+    "Казвам се Мартин Петков и съм студент по информатика във Факултета по математика и информатика на Софийския университет. Програмирането ме привлича, защото съчетава логика и творчество: започвам от неясен проблем и стъпка по стъпка стигам до нещо, което работи.",
+    "Най-много ме интересува разработката на софтуер с чиста архитектура. В университета изградих две конзолни приложения на C++: игра за двама с динамична дъска и система, наподобяваща Goodreads, с потребителски роли, рафтове и съобщения. В тях упражних ООП, валидация на команди, работа с файлове и тестване на гранични случаи.",
+    "Работя с Git и GitHub и се стремя кодът ми да е ясен и подреден, а решенията ми да мога да обясня просто.",
+    "Професионалната ми цел е да стана софтуерен инженер в екип, където мога да уча от опитни колеги, да разширя уменията си отвъд C++ и да поемам все по-голяма отговорност."
+  ],
+  focus: ["Разработка на софтуер", "ООП и архитектура", "Алгоритми", "Игри"],
+  skills: [
+    { name: "C++",          level: 2, note: "Динамична памет, класове и работа с файлове.", href: "#p2", proof: "Goodreads" },
+    { name: "ООП",          level: 2, note: "Наследяване, абстракции и йерархия от роли.",   href: "#p2", proof: "Goodreads" },
+    { name: "Алгоритми",    level: 2, note: "Търсене с толерантност към грешки и обхождане на матрица.", href: "#p3", proof: "Queens Game" },
+    { name: "Git и GitHub", level: 2, note: "Репозиторита, комити и подредена история.",     href: "#p1", proof: "TravelApp" },
+    { name: "HTML и CSS",   level: 2, note: "Адаптивен дизайн и достъпност.",                href: "#top", proof: "Това портфолио" }
+  ],
+  projects: [
+    { id: "p1", title: "TravelApp", repo: "TravelApp",
+      tagline: "Приложение за планиране на пътувания.",
+      problem: "Планирането на пътувания често е разпиляно на много места и е трудно да се следи.",
+      goal: "Да събере на едно място нужната информация за едно пътуване.",
+      tech: ["C++", "Visual Studio"],
+      architecture: "Потребител ──► Меню ──► Логика на приложението ──► Данни",
+      contribution: "Проектирах и реализирах приложението самостоятелно.",
+      team: false, role: "", demo: "" },
+    { id: "p2", title: "Goodreads", repo: "Goodreads",
+      tagline: "Конзолно приложение, което наподобява Goodreads.",
+      problem: "Как да се управляват книги, потребители, рафтове и съобщения в една система с различни роли и права.",
+      goal: "Среда за управление и споделяне на информация за книги, с читатели, автори и издателства.",
+      tech: ["C++", "ООП", "Файлове"],
+      architecture: "User\n ├── Reader\n │    └── Author\n └── Publisher\n\nМодели: Book · Shelf · Message · Date",
+      contribution: "Курсова работа по ООП (ФМИ, СУ). Реализирах йерархията от роли, командите с валидация, търсенето с до 2 грешни символа, системата от известия и запазването на данните във файл.",
+      team: false, role: "", demo: "" },
+    { id: "p3", title: "Queens Game", repo: "QueensGame",
+      tagline: "Конзолна игра за двама на дъска N × M.",
+      problem: "Играчите поставят кралици, които блокират ред, колона и диагонали. Как се следи кои клетки са свободни и кой печели.",
+      goal: "Пълна игра с визуализация, история на ходовете, запис и зареждане. Печели последният, който е поставил кралица.",
+      tech: ["C++", "Матрици", "Файлове"],
+      architecture: "Дъска (динамична матрица)\n ├── Матрица на атаките\n ├── История на ходовете (back, history)\n ├── Запис и зареждане (save, load)\n └── Състояние на играта и победител",
+      contribution: "Курсова работа по „Увод в програмирането“ (ФМИ, СУ). Реализирах цялата игра в един .cpp файл.",
+      team: false, role: "", demo: "" }
+  ]
+};
+/* ============================================== */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const gh = `https://github.com/${encodeURIComponent(ME.github)}`;
+const levels = ["", "Основно", "Добро", "Напреднало"];
+const colors = ["var(--butter)", "var(--lilac)", "var(--mint)", "var(--coral)"];
+const techs = [...new Set([...ME.skills.map(s => s.name), ...ME.projects.flatMap(p => p.tech)])];
+
+document.title = `Портфолио · ${ME.name}`;
+$("#h-name").textContent = ME.name;
+$("#h-lead").textContent = ME.lead;
+$("#h-gh").href = gh;
+$("#bio").innerHTML = `<h3>Накратко</h3>` + ME.bio.map(p => `<p>${esc(p)}</p>`).join("");
+$("#focus").innerHTML = ME.focus.map(f => `<li>${esc(f)}</li>`).join("");
+// $("#s-gpa").textContent = ME.gpa;
+$("#s-proj").textContent = ME.projects.length;
+$("#s-tech").textContent = techs.length;
+$("#year").textContent = new Date().getFullYear();
+$("#f-name").textContent = ME.name;
+$("#track").innerHTML = [0, 1].map(() => techs.map(t => `<span>${esc(t)}</span>`).join("")).join("");
+
+$("#skillGrid").innerHTML = ME.skills.map(s => `
+  <a class="skill" href="${esc(s.href)}">
+    <b>${esc(s.name)}<em>${levels[s.level]}</em></b>
+    <div class="dots" role="img" aria-label="Ниво: ${levels[s.level]}">${[1,2,3].map(i => `<i class="${i <= s.level ? 'on' : ''}"></i>`).join("")}</div>
+    <small>${esc(s.note)} Пример: ${esc(s.proof)}.</small>
+  </a>`).join("");
+
+$("#projectList").innerHTML = ME.projects.map((p, i) => `
+  <article class="project" id="${p.id}" style="--i:${i};background:${colors[i % colors.length]}">
+    <div>
+      <h3>${esc(p.title)}</h3>
+      <p class="tag">${esc(p.tagline)}</p>
+      <div class="badges">
+        ${p.tech.map(t => `<span class="badge">${esc(t)}</span>`).join("")}
+        <span class="badge ${p.team ? 'team' : ''}">${p.team ? 'Групов проект' : 'Личен проект'}</span>
+      </div>
+      <div class="facts">
+        <div><h4>Проблем</h4><p>${esc(p.problem)}</p></div>
+        <div><h4>Цел</h4><p>${esc(p.goal)}</p></div>
+        <div><h4>Моят принос</h4><p>${esc(p.contribution)}</p></div>
+        ${p.team ? `<div><h4>Моята роля в екипа</h4><p>${esc(p.role)}</p></div>` : ""}
+      </div>
+    </div>
+    <div class="side">
+      <div class="win"><header><i></i><i></i><i></i><span>Архитектура</span></header><pre>${esc(p.architecture)}</pre></div>
+      <div class="btns">
+        <a class="btn main" href="${gh}/${encodeURIComponent(p.repo)}" target="_blank" rel="noopener">Код в GitHub</a>
+        ${p.demo ? `<a class="btn" href="${esc(p.demo)}" target="_blank" rel="noopener">Демо на живо</a>` : ""}
+      </div>
+      <span class="live" data-repo="${esc(p.repo)}"></span>
+    </div>
+  </article>`).join("");
+
+$("#mail").href = `mailto:${ME.email}`;
+$("#mail").textContent = ME.email;
+$("#links").innerHTML = `<a href="${gh}" target="_blank" rel="noopener">GitHub</a><a href="${esc(ME.linkedin)}" target="_blank" rel="noopener">LinkedIn</a><a href="${esc(ME.instagram)}" target="_blank" rel="noopener">Instagram</a><a href="${esc(ME.facebook)}" target="_blank" rel="noopener">Facebook</a>`;
+
+// звезди и последна промяна от GitHub (при грешка не се показват)
+document.querySelectorAll("[data-repo]").forEach(async el => {
+  try {
+    const r = await fetch(`https://api.github.com/repos/${encodeURIComponent(ME.github)}/${encodeURIComponent(el.dataset.repo)}`);
+    if (!r.ok) return;
+    const d = await r.json();
+    el.textContent = `★ ${d.stargazers_count} · обновен ${new Date(d.pushed_at).toLocaleDateString("bg-BG", {month:"long", year:"numeric"})}`;
+  } catch (e) {}
+});
+
+// интерактивна мрежа от точки в hero: точките растат и се оцветяват около курсора
+(() => {
+  const cv = $("#dots"), cx = cv.getContext("2d");
+  const still = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  let w, h, dpr, m = {x: -999, y: -999}, raf;
+  const gap = 30;
+  const size = () => {
+    dpr = devicePixelRatio || 1; w = cv.clientWidth; h = cv.clientHeight;
+    cv.width = w * dpr; cv.height = h * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); draw();
+  };
+  const draw = () => {
+    const dark = matchMedia("(prefers-color-scheme:dark)").matches;
+    cx.clearRect(0, 0, w, h);
+    for (let y = gap / 2; y < h; y += gap) for (let x = gap / 2; x < w; x += gap) {
+      const d = Math.hypot(x - m.x, y - m.y), t = Math.max(0, 1 - d / 190);
+      cx.beginPath(); cx.arc(x, y, 1.6 + t * 9, 0, 6.283);
+      cx.fillStyle = t > .02 ? `rgba(255,106,77,${.35 + t * .65})` : (dark ? "rgba(242,245,243,.16)" : "rgba(15,23,32,.16)");
+      cx.fill();
+    }
+  };
+  const loop = () => { draw(); raf = requestAnimationFrame(loop); };
+  addEventListener("resize", size); size();
+  if (still) return;
+  const hero = $("#top");
+  hero.addEventListener("pointermove", e => { const b = cv.getBoundingClientRect(); m.x = e.clientX - b.left; m.y = e.clientY - b.top; });
+  hero.addEventListener("pointerleave", () => { m.x = m.y = -999; });
+  new IntersectionObserver(([e]) => { cancelAnimationFrame(raf); if (e.isIntersecting) loop(); }).observe(hero);
+})();
+</script>
+</body>
+</html>
